@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            background-image: url('/../assets/images/bk1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .login-box {
+            max-width: 800px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            padding: 20px;
+        }
+
+        .login-box img {
+            max-width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .text-danger {
+            font-size: 0.875em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="login-box">
+        <div class="text-center mb-4">
+            <h1 class="text-success font-weight-bold">User Login</h1>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <div style="flex: 1; max-width: 250px;">
+                <img src="/../assets/images/userlogin.png" alt="User Login Icon">
+            </div>
+
+            <div style="flex: 2; padding-left: 20px;">
+                <form [formGroup]="loginUser" (ngSubmit)="loginUserfun(loginUser.value)">
+                    <div class="form-group d-flex align-items-center">
+                        <label for="exampleInputEmail1" class="mb-0 mr-2" style="color: #007BFF; flex: 1;">Email Id:</label>
+                        <input type="text" name="email" formControlName="email" placeholder="Email Id" class="form-control form-control-sm" id="exampleInputEmail1" style="flex: 2;"> 
+                        <br>
+                        <div *ngIf="loginUser.get('email').hasError('required') && loginUser.get('email').touched"
+                          class="text-danger">Email is required</div> 
+                          
+                        <div *ngIf="loginUser.get('email').hasError('email') && loginUser.get('email').touched"
+                            class="text-danger">Enter a valid email</div>
+                    </div>
+
+                    <div class="form-group d-flex align-items-center">
+                        <label for="exampleInputPassword1" class="mb-0 mr-2" style="color: #007BFF; flex: 1;">Password:</label>
+                        <input type="password" name="password" formControlName="password" placeholder="Password" class="form-control form-control-sm" id="exampleInputPassword1" style="flex: 2;">
+                        <div *ngIf="loginUser.get('password').hasError('required') && loginUser.get('password').touched"
+                            class="text-danger">Password is required</div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button class="btn btn-success" (click)="onclk()">Create New Account</button>
+                    </div>
+                </form>
+
+                <div class="text-center text-danger mt-3">
+                    <h2 *ngIf="invalid">{{invalid}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+    
