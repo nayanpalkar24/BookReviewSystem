@@ -1,0 +1,53 @@
+Database schemas for Book review system
+
+// create the database
+create database books;
+
+use books;
+
+
+// creating user table
+create table User (
+email varchar(45) primary key,
+name varchar(45),
+password varchar(45)
+);
+
+
+//creating book table
+create table Book (
+	id int primary key Auto_Increment,
+    name varchar(50),
+    author varchar(50),
+    description text,
+    price int,
+    catrgory varchar(45),
+    enable varchar(45)
+    );
+    
+
+//creating review table
+create table Reviews (
+id int primary key Auto_Increment,
+uname varchar(45),
+review text,
+rating int
+);
+
+
+//fetch the table data
+select * from User;
+
+select * from Book;
+
+select * from Reviews;
+    
+    
+
+
+
+
+
+
+
+
